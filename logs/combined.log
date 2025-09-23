@@ -86,3 +86,14 @@
 {"level":"error","message":"Error creating the user: Error: User with this email already exists","service":"aquisitions-api"}
 {"level":"error","message":"Error in signup controller: User with this email already exists","service":"aquisitions-api","stack":"Error: User with this email already exists\n    at createUser (file:///C:/Users/Dilesha%20Gayashan/New%20folder/Desktop/acquisitions/src/services/auth.service.js:26:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async signup (file:///C:/Users/Dilesha%20Gayashan/New%20folder/Desktop/acquisitions/src/controllers/auth.controller.js:20:18)"}
 {"level":"info","message":"::1 - - [21/Sep/2025:16:39:56 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 409 47 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"error","message":"Error creating the user: Error: User with this email already exists","service":"aquisitions-api"}
+{"level":"error","message":"Error in signup controller: User with this email already exists","service":"aquisitions-api","stack":"Error: User with this email already exists\n    at createUser (file:///C:/Users/Dilesha%20Gayashan/New%20folder/Desktop/acquisitions/src/services/auth.service.js:26:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async signup (file:///C:/Users/Dilesha%20Gayashan/New%20folder/Desktop/acquisitions/src/controllers/auth.controller.js:20:18)"}
+{"level":"info","message":"::1 - - [21/Sep/2025:16:41:04 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 409 47 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"User c@gmail.com created successfully","service":"aquisitions-api"}
+{"level":"info","message":"User registered successfully: c@gmail.com","service":"aquisitions-api"}
+{"level":"info","message":"::1 - - [21/Sep/2025:16:41:09 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 201 96 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"User c@gmail.com authenticated successfully","service":"aquisitions-api"}
+{"level":"info","message":"User signed in successfully: c@gmail.com","service":"aquisitions-api"}
+{"level":"info","message":"::1 - - [23/Sep/2025:15:06:21 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 200 107 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"User signed out successfully","service":"aquisitions-api"}
+{"level":"info","message":"::1 - - [23/Sep/2025:15:07:29 +0000] \"POST /api/auth/sign-out HTTP/1.1\" 200 42 \"-\" \"HTTPie\"","service":"aquisitions-api"}
