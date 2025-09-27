@@ -1,5 +1,13 @@
-
+#Node modules
 node_modules
+
+# Environment files
 .env
 .env.*
 
+# Local configuration files
+.vscode/
+.neon_local/
+
+# Readme and markdown files
+*.md
