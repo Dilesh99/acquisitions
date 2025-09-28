@@ -132,3 +132,99 @@
 {"level":"info","message":"User ashborn541@gmail.com created successfully","service":"aquisitions-api"}
 {"level":"info","message":"User registered successfully: ashborn541@gmail.com","service":"aquisitions-api"}
 {"level":"info","message":"::ffff:172.19.0.1 - - [27/Sep/2025:19:43:26 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 201 103 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"Root endpoint accessed","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:04:53:06 +0000] \"GET / HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:04:53:06 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:04:53:06 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"aquisitions-api"}
+{"level":"info","message":"Getting all users...","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:04:53:44 +0000] \"GET /api/users HTTP/1.1\" 200 476 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"aquisitions-api"}
+{"level":"info","message":"User ash@gmail.com created successfully","service":"aquisitions-api"}
+{"level":"info","message":"User registered successfully: ash@gmail.com","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:04:56:04 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 201 97 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"Getting all users...","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:04:56:53 +0000] \"GET /api/users HTTP/1.1\" 200 614 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"aquisitions-api"}
+{"level":"info","message":"User as@gmail.com created successfully","service":"aquisitions-api"}
+{"level":"info","message":"User registered successfully: as@gmail.com","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:04:58:08 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 201 96 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"Getting all users...","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:05:00:57 +0000] \"GET /api/users HTTP/1.1\" 200 751 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:25:16 +0000] \"GET /api/users/3 HTTP/1.1\" 200 13 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:26:19 +0000] \"GET /api/users/6 HTTP/1.1\" 200 13 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:26:21 +0000] \"GET /api/users/6 HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"aquisitions-api"}
+{"level":"info","message":"Root endpoint accessed","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:27:13 +0000] \"GET / HTTP/1.1\" 304 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:27:17 +0000] \"GET /api/users/6 HTTP/1.1\" 401 69 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36\"","service":"aquisitions-api"}
+{"level":"error","message":"Error authenticating user: Error: Invalid email or password","service":"aquisitions-api"}
+{"level":"error","message":"Error in signin controller: Invalid email or password","service":"aquisitions-api","stack":"Error: Invalid email or password\n    at authenticateUser (file:///app/src/services/auth.service.js:35:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async signin (file:///app/src/controllers/auth.controller.js:55:18)"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:28:10 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 401 37 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"error","message":"Error authenticating user: Error: Invalid email or password","service":"aquisitions-api"}
+{"level":"error","message":"Error in signin controller: Invalid email or password","service":"aquisitions-api","stack":"Error: Invalid email or password\n    at authenticateUser (file:///app/src/services/auth.service.js:35:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async signin (file:///app/src/controllers/auth.controller.js:55:18)"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:28:21 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 401 37 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"User as@gmail.com created successfully","service":"aquisitions-api"}
+{"level":"info","message":"User registered successfully: as@gmail.com","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:28:31 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 201 96 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"User as@gmail.com authenticated successfully","service":"aquisitions-api"}
+{"level":"info","message":"User signed in successfully: as@gmail.com","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:28:41 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 200 107 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:29:46 +0000] \"POST /api/auth/users/3 HTTP/1.1\" 404 156 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:29:50 +0000] \"GET /api/auth/users/3 HTTP/1.1\" 404 155 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:30:00 +0000] \"GET /api/auth/users/6 HTTP/1.1\" 404 155 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:30:15 +0000] \"GET /api/users/6 HTTP/1.1\" 401 69 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:30:30 +0000] \"GET /api/users/6 HTTP/1.1\" 401 69 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:30:33 +0000] \"GET /api/users/ HTTP/1.1\" 401 69 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"User as@gmail.com authenticated successfully","service":"aquisitions-api"}
+{"level":"info","message":"User signed in successfully: as@gmail.com","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:30:53 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 200 107 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:31:48 +0000] \"POST /api/users HTTP/1.1\" 404 149 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:31:51 +0000] \"GET /api/users HTTP/1.1\" 401 69 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:32:25 +0000] \"GET /api/users HTTP/1.1\" 401 69 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"error","message":"Error authenticating user: Error: Invalid email or password","service":"aquisitions-api"}
+{"level":"error","message":"Error in signin controller: Invalid email or password","service":"aquisitions-api","stack":"Error: Invalid email or password\n    at authenticateUser (file:///app/src/services/auth.service.js:41:13)\n    at async signin (file:///app/src/controllers/auth.controller.js:55:18)"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:33:23 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 401 37 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"error","message":"Error authenticating user: Error: Invalid email or password","service":"aquisitions-api"}
+{"level":"error","message":"Error in signin controller: Invalid email or password","service":"aquisitions-api","stack":"Error: Invalid email or password\n    at authenticateUser (file:///app/src/services/auth.service.js:41:13)\n    at async signin (file:///app/src/controllers/auth.controller.js:55:18)"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:33:30 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 401 37 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"error","message":"Error authenticating user: Error: Invalid email or password","service":"aquisitions-api"}
+{"level":"error","message":"Error in signin controller: Invalid email or password","service":"aquisitions-api","stack":"Error: Invalid email or password\n    at authenticateUser (file:///app/src/services/auth.service.js:41:13)\n    at async signin (file:///app/src/controllers/auth.controller.js:55:18)"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:33:39 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 401 37 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"error","message":"Error authenticating user: Error: Invalid email or password","service":"aquisitions-api"}
+{"level":"error","message":"Error in signin controller: Invalid email or password","service":"aquisitions-api","stack":"Error: Invalid email or password\n    at authenticateUser (file:///app/src/services/auth.service.js:41:13)\n    at async signin (file:///app/src/controllers/auth.controller.js:55:18)"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:33:59 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 401 37 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"error","message":"Error authenticating user: Error: Invalid email or password","service":"aquisitions-api"}
+{"level":"error","message":"Error in signin controller: Invalid email or password","service":"aquisitions-api","stack":"Error: Invalid email or password\n    at authenticateUser (file:///app/src/services/auth.service.js:41:13)\n    at async signin (file:///app/src/controllers/auth.controller.js:55:18)"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:34:09 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 401 37 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"error","message":"Error authenticating user: Error: Invalid email or password","service":"aquisitions-api"}
+{"level":"error","message":"Error in signin controller: Invalid email or password","service":"aquisitions-api","stack":"Error: Invalid email or password\n    at authenticateUser (file:///app/src/services/auth.service.js:41:13)\n    at async signin (file:///app/src/controllers/auth.controller.js:55:18)"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:34:20 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 401 37 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"User d@gmail.com authenticated successfully","service":"aquisitions-api"}
+{"level":"info","message":"User signed in successfully: d@gmail.com","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:34:24 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 200 110 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:34:59 +0000] \"GET /api/users HTTP/1.1\" 401 69 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:35:15 +0000] \"GET /api/users HTTP/1.1\" 401 69 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:35:35 +0000] \"GET /api/users HTTP/1.1\" 401 69 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"User d@gmail.com authenticated successfully","service":"aquisitions-api"}
+{"level":"info","message":"User signed in successfully: d@gmail.com","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:37:00 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 200 110 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:37:58 +0000] \"POST /api/users HTTP/1.1\" 404 149 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"Getting all users...","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:38:02 +0000] \"GET /api/users HTTP/1.1\" 200 613 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"Getting user by ID: 6","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:38:16 +0000] \"GET /api/users/6 HTTP/1.1\" 200 185 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"Deleting user 5","service":"aquisitions-api"}
+{"level":"info","message":"User 5 deleted successfully","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:38:36 +0000] \"DELETE /api/users/5 HTTP/1.1\" 200 105 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"User signed out successfully","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:39:16 +0000] \"POST /api/auth/sign-out HTTP/1.1\" 200 42 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"User as@gmail.com authenticated successfully","service":"aquisitions-api"}
+{"level":"info","message":"User signed in successfully: as@gmail.com","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:39:52 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 200 107 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:40:20 +0000] \"POST /api/users/6 HTTP/1.1\" 404 151 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"Getting user by ID: 6","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:40:24 +0000] \"GET /api/users/6 HTTP/1.1\" 200 185 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:40:32 +0000] \"DELETE /api/users/6 HTTP/1.1\" 403 58 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:41:42 +0000] \"DELETE /api/users/6 HTTP/1.1\" 403 58 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"Getting user by ID: 6","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:41:46 +0000] \"GET /api/users/6 HTTP/1.1\" 200 185 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:41:51 +0000] \"GET /api/users/5 HTTP/1.1\" 403 67 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:41:59 +0000] \"GET /api/users/3 HTTP/1.1\" 403 67 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:42:05 +0000] \"GET /api/users HTTP/1.1\" 403 58 \"-\" \"HTTPie\"","service":"aquisitions-api"}
