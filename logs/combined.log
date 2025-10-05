@@ -228,3 +228,6 @@
 {"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:41:51 +0000] \"GET /api/users/5 HTTP/1.1\" 403 67 \"-\" \"HTTPie\"","service":"aquisitions-api"}
 {"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:41:59 +0000] \"GET /api/users/3 HTTP/1.1\" 403 67 \"-\" \"HTTPie\"","service":"aquisitions-api"}
 {"level":"info","message":"::ffff:172.19.0.1 - - [28/Sep/2025:10:42:05 +0000] \"GET /api/users HTTP/1.1\" 403 58 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Oct/2025:05:11:37 +0000] \"GET /health HTTP/1.1\" 200 73 \"-\" \"-\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Oct/2025:05:11:37 +0000] \"GET /api HTTP/1.1\" 200 44 \"-\" \"-\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Oct/2025:05:11:37 +0000] \"GET /nonexistent HTTP/1.1\" 404 27 \"-\" \"-\"","service":"aquisitions-api"}

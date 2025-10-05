@@ -1,0 +1,56 @@
+name: 'Lint and Format'
+
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+    branches: [main, staging]
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: |
+          echo "🔍 Running ESLint check..."
+          if ! npm run lint; then
+            echo "❌ ESLint found issues. Run 'npm run lint:fix' to automatically fix some issues."
+            echo "::error title=ESLint Issues::ESLint found issues in your code. Run 'npm run lint:fix' to automatically fix some issues."
+            exit 1
+          else
+            echo "✅ ESLint check passed!"
+          fi
+
+      - name: Run Prettier check
+        run: |
+          echo "🎨 Running Prettier format check..."
+          if ! npm run format:check; then
+            echo "❌ Prettier found formatting issues. Run 'npm run format' to fix formatting."
+            echo "::error title=Formatting Issues::Prettier found formatting issues. Run 'npm run format' to fix formatting."
+            exit 1
+          else
+            echo "✅ Prettier check passed!"
+          fi
+
+      - name: Summary
+        if: success()
+        run: |
+          echo "## ✅ All checks passed! 🎉" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ ESLint check: **PASSED**" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Prettier check: **PASSED**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Your code is properly linted and formatted!" >> $GITHUB_STEP_SUMMARY
