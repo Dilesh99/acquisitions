@@ -281,3 +281,6 @@
 {"level":"info","message":"User doe@example.com created successfully","service":"aquisitions-api"}
 {"level":"info","message":"User registered successfully: doe@example.com","service":"aquisitions-api"}
 {"level":"info","message":"::ffff:172.19.0.1 - - [05/Oct/2025:07:33:34 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 201 99 \"-\" \"HTTPie\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Oct/2025:15:25:53 +0000] \"GET /health HTTP/1.1\" 200 73 \"-\" \"-\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Oct/2025:15:25:53 +0000] \"GET /api HTTP/1.1\" 200 44 \"-\" \"-\"","service":"aquisitions-api"}
+{"level":"info","message":"::ffff:127.0.0.1 - - [05/Oct/2025:15:25:54 +0000] \"GET /nonexistent HTTP/1.1\" 404 27 \"-\" \"-\"","service":"aquisitions-api"}
