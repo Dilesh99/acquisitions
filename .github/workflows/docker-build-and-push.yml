@@ -8,7 +8,7 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -26,7 +26,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKER_USERNAME }}/acquisitions
+          images: ${{ secrets.DOCKER_USERNAME }}/acquisitions-app
           tags: |
             type=ref,event=branch
             type=sha,prefix={{branch}}-
@@ -62,7 +62,7 @@ jobs:
           echo "**Repository:** \`${{ secrets.DOCKER_USERNAME }}/acquisitions\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Tags published:**" >> $GITHUB_STEP_SUMMARY
-          
+
           # Parse and display tags
           TAGS="${{ steps.meta.outputs.tags }}"
           echo "$TAGS" | while IFS= read -r tag; do
@@ -71,7 +71,7 @@ jobs:
               echo "- \`$tag_name\`" >> $GITHUB_STEP_SUMMARY
             fi
           done
-          
+
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 🏗️ Build Details" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY

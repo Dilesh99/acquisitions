@@ -1,5 +1,14 @@
-import { fetchAllUsers, fetchUserById, updateUserById, deleteUserById } from '#controllers/users.controller.js';
-import { authenticate, authorize, checkOwnershipOrAdmin } from '#middleware/auth.middleware.js';
+import {
+  fetchAllUsers,
+  fetchUserById,
+  updateUserById,
+  deleteUserById,
+} from '#controllers/users.controller.js';
+import {
+  authenticate,
+  authorize,
+  checkOwnershipOrAdmin,
+} from '#middleware/auth.middleware.js';
 import express from 'express';
 
 const router = express.Router();
@@ -15,6 +24,5 @@ router.put('/:id', authenticate, updateUserById);
 
 // Delete user - requires authentication and admin role
 router.delete('/:id', authenticate, authorize('admin'), deleteUserById);
-
 
 export default router;

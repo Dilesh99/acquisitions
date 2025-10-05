@@ -7,7 +7,10 @@ export const authenticate = (req, res, next) => {
     const token = cookies.get(req, 'token');
 
     if (!token) {
-      return res.status(401).json({ error: 'Unauthorized', message: 'Authentication token is required' });
+      return res.status(401).json({
+        error: 'Unauthorized',
+        message: 'Authentication token is required',
+      });
     }
 
     const decoded = jwttoken.verify(token);
@@ -15,18 +18,24 @@ export const authenticate = (req, res, next) => {
     next();
   } catch (error) {
     logger.error('Authentication middleware error:', error);
-    return res.status(401).json({ error: 'Unauthorized', message: 'Invalid or expired token' });
+    return res
+      .status(401)
+      .json({ error: 'Unauthorized', message: 'Invalid or expired token' });
   }
 };
 
 export const authorize = (...roles) => {
   return (req, res, next) => {
     if (!req.user) {
-      return res.status(401).json({ error: 'Unauthorized', message: 'Authentication required' });
+      return res
+        .status(401)
+        .json({ error: 'Unauthorized', message: 'Authentication required' });
     }
 
     if (roles.length && !roles.includes(req.user.role)) {
-      return res.status(403).json({ error: 'Forbidden', message: 'Insufficient permissions' });
+      return res
+        .status(403)
+        .json({ error: 'Forbidden', message: 'Insufficient permissions' });
     }
 
     next();
@@ -35,7 +44,9 @@ export const authorize = (...roles) => {
 
 export const checkOwnershipOrAdmin = (req, res, next) => {
   if (!req.user) {
-    return res.status(401).json({ error: 'Unauthorized', message: 'Authentication required' });
+    return res
+      .status(401)
+      .json({ error: 'Unauthorized', message: 'Authentication required' });
   }
 
   const requestedUserId = parseInt(req.params.id);
@@ -47,5 +58,7 @@ export const checkOwnershipOrAdmin = (req, res, next) => {
     return next();
   }
 
-  return res.status(403).json({ error: 'Forbidden', message: 'You can only access your own data' });
+  return res
+    .status(403)
+    .json({ error: 'Forbidden', message: 'You can only access your own data' });
 };

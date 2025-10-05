@@ -1,4 +1,4 @@
-import'dotenv/config.js';
+import 'dotenv/config.js';
 
 export default {
   schema: './src/models/*.js',

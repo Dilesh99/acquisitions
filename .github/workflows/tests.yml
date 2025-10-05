@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -62,7 +62,7 @@ jobs:
             echo "Some tests failed. Please review the test output and fix the failing tests." >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
           fi
-          
+
           # Add coverage information if available
           if [ -f "coverage/lcov-report/index.html" ]; then
             echo "### 📊 Coverage Report" >> $GITHUB_STEP_SUMMARY
@@ -70,7 +70,7 @@ jobs:
             echo "Coverage reports have been uploaded as artifacts and will be retained for 30 days." >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
           fi
-          
+
           echo "### 📋 Environment Details" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- **Node.js Version:** 20.x" >> $GITHUB_STEP_SUMMARY
