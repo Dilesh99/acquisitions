@@ -46,7 +46,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           target: production
           cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/acquisitions-app:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/acquisitions-apps:buildcache,mode=max
+          cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/acquisitions-app:buildcache,mode=max
 
       - name: Generate summary
         run: |
