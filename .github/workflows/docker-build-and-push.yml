@@ -57,12 +57,8 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           target: production
-          cache-from: |
-            type=registry,ref=${{ secrets.DOCKER_USERNAME }}/acquisitions:buildcache
-            type=gha
-          cache-to: |
-            type=registry,ref=${{ secrets.DOCKER_USERNAME }}/acquisitions:buildcache,mode=max
-            type=gha,mode=max
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Generate summary
         run: |
