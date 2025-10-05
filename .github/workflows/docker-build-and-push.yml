@@ -40,7 +40,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKER_USERNAME }}/acquisitions
+          images: ${{ secrets.DOCKER_USERNAME }}/acquisitions-app
           tags: |
             type=ref,event=branch
             type=sha,prefix={{branch}}-
@@ -67,7 +67,7 @@ jobs:
           echo "✅ **Docker image successfully built and pushed!**" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Published Image" >> $GITHUB_STEP_SUMMARY
-          echo "**Repository:** \`${{ secrets.DOCKER_USERNAME }}/acquisitions\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Repository:** \`${{ secrets.DOCKER_USERNAME }}/acquisitions-app\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Tags" >> $GITHUB_STEP_SUMMARY
           echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
