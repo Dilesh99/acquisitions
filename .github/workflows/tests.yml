@@ -1,14 +1,24 @@
-name: 'Tests'
+name: Tests
 
 on:
   push:
-    branches: [main, staging]
+    branches:
+      - main
+      - staging
   pull_request:
-    branches: [main, staging]
+    branches:
+      - main
+      - staging
 
 jobs:
   test:
+    name: Run Tests
     runs-on: ubuntu-latest
+
+    env:
+      NODE_ENV: test
+      NODE_OPTIONS: --experimental-vm-modules
+      DATABASE_URL: postgresql://test_user:test_password@localhost:5432/test_db
 
     steps:
       - name: Checkout code
@@ -24,25 +34,13 @@ jobs:
         run: npm ci
 
       - name: Run tests
-        env:
-          NODE_ENV: test
-          NODE_OPTIONS: --experimental-vm-modules
-          DATABASE_URL: postgresql://test:test@localhost:5432/test_db
-        run: |
-          echo "🧪 Running tests..."
-          if npm test; then
-            echo "✅ All tests passed!"
-            echo "test_status=passed" >> $GITHUB_ENV
-          else
-            echo "❌ Tests failed!"
-            echo "::error title=Test Failures::Some tests failed. Please check the test output above for details."
-            echo "test_status=failed" >> $GITHUB_ENV
-            exit 1
-          fi
+        id: test
+        run: npm test -- --coverage
+        continue-on-error: true
 
       - name: Upload coverage reports
-        uses: actions/upload-artifact@v4
         if: always()
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-reports
           path: coverage/
@@ -51,28 +49,32 @@ jobs:
       - name: Generate test summary
         if: always()
         run: |
-          if [[ "${{ env.test_status }}" == "passed" ]]; then
-            echo "## 🧪 Test Results: ✅ PASSED" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "All tests completed successfully! 🎉" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "## 🧪 Test Results: ❌ FAILED" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "Some tests failed. Please review the test output and fix the failing tests." >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-          fi
-
-          # Add coverage information if available
-          if [ -f "coverage/lcov-report/index.html" ]; then
-            echo "### 📊 Coverage Report" >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "Coverage reports have been uploaded as artifacts and will be retained for 30 days." >> $GITHUB_STEP_SUMMARY
-            echo "" >> $GITHUB_STEP_SUMMARY
-          fi
-
-          echo "### 📋 Environment Details" >> $GITHUB_STEP_SUMMARY
+          echo "## Test Results 🧪" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- **Node.js Version:** 20.x" >> $GITHUB_STEP_SUMMARY
-          echo "- **Environment:** test" >> $GITHUB_STEP_SUMMARY
-          echo "- **Node Options:** --experimental-vm-modules" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ steps.test.outcome }}" == "success" ]; then
+            echo "✅ **All tests passed!**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "### Coverage Status" >> $GITHUB_STEP_SUMMARY
+            echo "Coverage reports have been uploaded as artifacts and are available for 30 days." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **Tests failed!**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "Please review the test output above for details on which tests failed." >> $GITHUB_STEP_SUMMARY
+          fi
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "**Node Version:** 20.x" >> $GITHUB_STEP_SUMMARY
+          echo "**Environment:** test" >> $GITHUB_STEP_SUMMARY
+
+      - name: Annotate test failures
+        if: steps.test.outcome == 'failure'
+        run: |
+          echo "::error::Test suite failed! Please check the test output for details."
+          echo "::warning::Some tests did not pass. Review the logs above to identify failing tests."
+          exit 1
+
+      - name: Success message
+        if: steps.test.outcome == 'success'
+        run: echo "✅ All tests passed successfully with coverage reports generated!"

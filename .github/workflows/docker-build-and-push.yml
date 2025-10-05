@@ -5,51 +5,15 @@ on:
     branches:
       - main
   workflow_dispatch:
-    inputs:
-      tag_suffix:
-        description: 'Additional tag suffix (optional)'
-        required: false
-        type: string
-
-env:
-  REGISTRY: docker.io
 
 jobs:
-  build-and-push:
+  docker:
     name: Build and Push Docker Image
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Validate Docker secrets
-        run: |
-          echo "🔍 Validating Docker Hub credentials..."
-
-          if [ -z "${{ secrets.DOCKER_USERNAME }}" ]; then
-            echo "::error::DOCKER_USERNAME secret is not set!"
-            echo "📝 To fix this:"
-            echo "   1. Go to: https://github.com/${{ github.repository }}/settings/secrets/actions"
-            echo "   2. Click 'New repository secret'"
-            echo "   3. Name: DOCKER_USERNAME"
-            echo "   4. Value: Your Docker Hub username (e.g., dilesh99)"
-            exit 1
-          fi
-
-          if [ -z "${{ secrets.DOCKER_PASSWORD }}" ]; then
-            echo "::error::DOCKER_PASSWORD secret is not set!"
-            echo "📝 To fix this:"
-            echo "   1. Create access token at: https://hub.docker.com/settings/security"
-            echo "   2. Add as DOCKER_PASSWORD secret in GitHub repository settings"
-            exit 1
-          fi
-
-          # Show what the image name will be
-          IMAGE_NAME="${{ secrets.DOCKER_USERNAME }}/acquisitions"
-          echo "✅ Docker secrets validated successfully"
-          echo "📦 Image will be published as: ${IMAGE_NAME}"
-          echo "🏷️  Available tags: latest, main, prod-timestamp, commit-sha"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -60,27 +24,16 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Extract metadata
+      - name: Extract metadata (tags, labels)
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ secrets.DOCKER_USERNAME }}/acquisitions
+          images: ${{ secrets.DOCKER_USERNAME }}/acquisitions-app
           tags: |
-            # Branch-based tags
             type=ref,event=branch
-            # SHA-based tags
-            type=sha,prefix={{branch}}-,format=short
-            # Latest tag for main branch
+            type=sha,prefix={{branch}}-
             type=raw,value=latest,enable={{is_default_branch}}
-            # Production timestamp tag
-            type=raw,value=prod-{{date 'YYYYMMDD-HHmmss'}},enable={{is_default_branch}}
-            # Custom suffix if provided
-            type=raw,value={{branch}}${{ inputs.tag_suffix && format('-{0}', inputs.tag_suffix) || '' }},enable=${{ inputs.tag_suffix != '' }}
-          labels: |
-            org.opencontainers.image.title=Acquisitions API
-            org.opencontainers.image.description=Node.js Express API for acquisitions system
-            org.opencontainers.image.vendor=dilesh99
-            org.opencontainers.image.created={{date 'YYYY-MM-DDTHH:mm:ssZ'}}
+            type=raw,value=prod-{{date 'YYYYMMDD-HHmmss'}}
 
       - name: Build and push Docker image
         id: build
@@ -91,40 +44,27 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          build-args: |
-            NODE_ENV=production
-            BUILD_DATE={{date 'YYYY-MM-DDTHH:mm:ssZ'}}
-            GIT_SHA=${{ github.sha }}
-            GIT_REF=${{ github.ref_name }}
+          target: production
+          cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/acquisitions-app:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/acquisitions-apps:buildcache,mode=max
 
-      - name: Generate build summary
-        if: success()
+      - name: Generate summary
         run: |
           echo "## Docker Build Summary 🐳" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ **Docker image successfully built and pushed!**" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Published Image" >> $GITHUB_STEP_SUMMARY
-          echo "**Image:** \`${{ secrets.DOCKER_USERNAME }}/acquisitions\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Repository:** \`${{ secrets.DOCKER_USERNAME }}/acquisitions-app\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### Tags Published" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          echo '${{ steps.meta.outputs.tags }}' >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "### Tags" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          echo "${{ steps.meta.outputs.tags }}" >> $GITHUB_STEP_SUMMARY
+          echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### Build Details" >> $GITHUB_STEP_SUMMARY
-          echo "- **Platforms:** linux/amd64, linux/arm64" >> $GITHUB_STEP_SUMMARY
-          echo "- **Build Date:** $(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_STEP_SUMMARY
-          echo "- **Git SHA:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
-          echo "- **Git Ref:** \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "### Platforms" >> $GITHUB_STEP_SUMMARY
+          echo "- linux/amd64" >> $GITHUB_STEP_SUMMARY
+          echo "- linux/arm64" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### Usage" >> $GITHUB_STEP_SUMMARY
-          echo '```bash' >> $GITHUB_STEP_SUMMARY
-          echo 'docker pull ${{ secrets.DOCKER_USERNAME }}/acquisitions:latest' >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-
-      - name: Build failure notification
-        if: failure()
-        run: |
-          echo "::error::Docker build failed - please check the build logs above for details"
-          echo "::notice::Ensure your Dockerfile is properly configured and secrets are set correctly"
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "**Image Digest:** \`${{ steps.build.outputs.digest }}\`" >> $GITHUB_STEP_SUMMARY
