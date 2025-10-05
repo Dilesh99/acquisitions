@@ -26,7 +26,7 @@ jobs:
       - name: Validate Docker secrets
         run: |
           echo "🔍 Validating Docker Hub credentials..."
-          
+
           if [ -z "${{ secrets.DOCKER_USERNAME }}" ]; then
             echo "::error::DOCKER_USERNAME secret is not set!"
             echo "📝 To fix this:"
@@ -36,7 +36,7 @@ jobs:
             echo "   4. Value: Your Docker Hub username (e.g., dilesh99)"
             exit 1
           fi
-          
+
           if [ -z "${{ secrets.DOCKER_PASSWORD }}" ]; then
             echo "::error::DOCKER_PASSWORD secret is not set!"
             echo "📝 To fix this:"
@@ -44,7 +44,7 @@ jobs:
             echo "   2. Add as DOCKER_PASSWORD secret in GitHub repository settings"
             exit 1
           fi
-          
+
           # Show what the image name will be
           IMAGE_NAME="${{ secrets.DOCKER_USERNAME }}/acquisitions"
           echo "✅ Docker secrets validated successfully"
